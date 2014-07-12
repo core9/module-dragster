@@ -14,13 +14,13 @@
  *  limitations under the License.
  */
 
-package com.wordnik.swagger.sample.model;
+package io.core9.dragster.model;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "Tag")
-public class Tag {
+@XmlRootElement(name = "Category")
+public class Category {
 	private long id;
 	private String name;
 

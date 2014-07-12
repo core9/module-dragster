@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.wordnik.swagger.sample.resource;
+package io.core9.dragster.resource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -34,6 +34,8 @@ import com.wordnik.swagger.sample.data.PetData;
 import com.wordnik.swagger.sample.exception.NotFoundException;
 import com.wordnik.swagger.sample.model.Owner;
 import com.wordnik.swagger.sample.model.Pet;
+import com.wordnik.swagger.sample.resource.JavaRestResourceUtil;
+import com.wordnik.swagger.sample.resource.OwnerResource;
 
 @Path("/pet")
 @Api(value = "/pet", description = "Operations about pets")

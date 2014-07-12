@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.wordnik.swagger.sample.data;
+package io.core9.dragster.data;
 
 import java.util.ArrayList;
 import java.util.List;

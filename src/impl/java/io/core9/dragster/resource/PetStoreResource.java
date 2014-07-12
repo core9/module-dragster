@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.wordnik.swagger.sample.resource;
+package io.core9.dragster.resource;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -32,6 +32,7 @@ import com.wordnik.swagger.annotations.ApiResponses;
 import com.wordnik.swagger.sample.data.StoreData;
 import com.wordnik.swagger.sample.exception.NotFoundException;
 import com.wordnik.swagger.sample.model.Order;
+import com.wordnik.swagger.sample.resource.JavaRestResourceUtil;
 
 @Path("/store")
 @Api(value="/store" , description = "Operations about store")

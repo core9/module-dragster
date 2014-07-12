@@ -14,7 +14,9 @@
  *  limitations under the License.
  */
 
-package com.wordnik.swagger.sample.exception;
+package io.core9.dragster.exception;
+
+import com.wordnik.swagger.sample.exception.ApiException;
 
 public class NotFoundException extends ApiException {
 	/**

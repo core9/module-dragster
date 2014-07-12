@@ -14,31 +14,17 @@
  *  limitations under the License.
  */
 
-package com.wordnik.swagger.sample.model;
+package io.core9.dragster.exception;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement(name = "Category")
-public class Category {
-	private long id;
-	private String name;
-
-	@XmlElement(name = "id")
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	@XmlElement(name = "name")
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+public class ApiException extends Exception{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
+	private int code;
+	public ApiException (int code, String msg) {
+		super(msg);
+		this.code = code;
 	}
 }

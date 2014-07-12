@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.wordnik.swagger.sample.resource;
+package io.core9.dragster.resource;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

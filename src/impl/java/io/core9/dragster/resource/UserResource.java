@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.wordnik.swagger.sample.resource;
+package io.core9.dragster.resource;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;

@@ -1,4 +1,4 @@
-package com.wordnik.swagger.sample.core9.connector;
+package io.core9.dragster.connector;
 
 import io.core9.plugin.rest.RestResource;
 import io.core9.plugin.rest.RestResourceConfig;
@@ -33,7 +33,7 @@ public class PetstoreRestResourceProviderImpl implements RestResourceProvider {
 	    config.setBasePath("http://localhost:9090/api");
 
 		restResourceConfig.setSwaggerConfig(config);
-		restResourceConfig.setModelPackage("com.wordnik.swagger.sample.model");
+		restResourceConfig.setModelPackage("io.core9.dragster.model");
 
 		
 		resourceMap.putAll(RestUtils.addRestResource(restResourceConfig, new PetResource()));
