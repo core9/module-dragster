@@ -1,5 +1,6 @@
 package io.core9.dragster.connector;
 
+import io.core9.dragster.resource.DragsterResource;
 import io.core9.plugin.rest.RestResource;
 import io.core9.plugin.rest.RestResourceConfig;
 import io.core9.plugin.rest.RestResourceConfigImpl;
@@ -18,7 +19,7 @@ import com.wordnik.swagger.sample.resource.UserResource;
 
 
 @PluginImplementation
-public class PetstoreRestResourceProviderImpl implements RestResourceProvider {
+public class DragsterRestResourceProviderImpl implements RestResourceProvider {
 
 	private Map<String, RestResource> resourceMap = new HashMap<>();
 	
@@ -35,12 +36,14 @@ public class PetstoreRestResourceProviderImpl implements RestResourceProvider {
 		restResourceConfig.setSwaggerConfig(config);
 		restResourceConfig.setModelPackage("io.core9.dragster.model");
 
+
+		resourceMap.putAll(RestUtils.addRestResource(restResourceConfig, new DragsterResource()));
 		
-		resourceMap.putAll(RestUtils.addRestResource(restResourceConfig, new PetResource()));
+/*		resourceMap.putAll(RestUtils.addRestResource(restResourceConfig, new PetResource()));
 		
 		resourceMap.putAll(RestUtils.addRestResource(restResourceConfig, new PetStoreResource()));
 		
-		resourceMap.putAll(RestUtils.addRestResource(restResourceConfig, new UserResource()));
+		resourceMap.putAll(RestUtils.addRestResource(restResourceConfig, new UserResource()));*/
 		
 		
 		return resourceMap;

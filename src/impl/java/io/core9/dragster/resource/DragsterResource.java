@@ -37,10 +37,10 @@ import com.wordnik.swagger.sample.model.Pet;
 import com.wordnik.swagger.sample.resource.JavaRestResourceUtil;
 import com.wordnik.swagger.sample.resource.OwnerResource;
 
-@Path("/pet")
-@Api(value = "/pet", description = "Operations about pets")
+@Path("/dragster")
+@Api(value = "/dragster", description = "Operations about pets")
 @Produces({"application/json"})
-public class PetResource {
+public class DragsterResource {
 	static PetData petData = new PetData();
 	static JavaRestResourceUtil ru = new JavaRestResourceUtil();
 
