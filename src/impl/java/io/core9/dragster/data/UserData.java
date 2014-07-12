@@ -19,7 +19,7 @@ package io.core9.dragster.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.wordnik.swagger.sample.model.User;
+import io.core9.dragster.model.User;
 
 public class UserData {
 	static List<User> users = new ArrayList<User>();

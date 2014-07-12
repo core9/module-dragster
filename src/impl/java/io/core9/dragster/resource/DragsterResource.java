@@ -30,12 +30,12 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
-import com.wordnik.swagger.sample.data.PetData;
-import com.wordnik.swagger.sample.exception.NotFoundException;
-import com.wordnik.swagger.sample.model.Owner;
-import com.wordnik.swagger.sample.model.Pet;
-import com.wordnik.swagger.sample.resource.JavaRestResourceUtil;
-import com.wordnik.swagger.sample.resource.OwnerResource;
+import io.core9.dragster.data.PetData;
+import io.core9.dragster.exception.NotFoundException;
+import io.core9.dragster.model.Owner;
+import io.core9.dragster.model.Pet;
+import io.core9.dragster.resource.JavaRestResourceUtil;
+import io.core9.dragster.resource.OwnerResource;
 
 @Path("/dragster")
 @Api(value = "/dragster", description = "Operations about pets")

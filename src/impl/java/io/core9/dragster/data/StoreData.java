@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.wordnik.swagger.sample.model.Order;
+import io.core9.dragster.model.Order;
 
 public class StoreData {
 	static List<Order> orders = new ArrayList<Order>();

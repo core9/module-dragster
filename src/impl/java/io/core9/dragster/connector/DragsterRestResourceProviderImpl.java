@@ -13,9 +13,6 @@ import java.util.Map;
 import net.xeoh.plugins.base.annotations.PluginImplementation;
 
 import com.wordnik.swagger.config.SwaggerConfig;
-import com.wordnik.swagger.sample.resource.PetResource;
-import com.wordnik.swagger.sample.resource.PetStoreResource;
-import com.wordnik.swagger.sample.resource.UserResource;
 
 
 @PluginImplementation
