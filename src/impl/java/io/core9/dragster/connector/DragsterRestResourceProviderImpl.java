@@ -4,7 +4,6 @@ import io.core9.dragster.resource.DragsterResource;
 import io.core9.plugin.rest.RestResource;
 import io.core9.plugin.rest.RestResourceConfig;
 import io.core9.plugin.rest.RestResourceConfigImpl;
-import io.core9.plugin.rest.RestResourceProvider;
 import io.core9.plugin.rest.RestUtils;
 
 import java.util.HashMap;
@@ -16,7 +15,7 @@ import com.wordnik.swagger.config.SwaggerConfig;
 
 
 @PluginImplementation
-public class DragsterRestResourceProviderImpl implements RestResourceProvider {
+public class DragsterRestResourceProviderImpl implements DragsterRestResourceProvider {
 
 	private Map<String, RestResource> resourceMap = new HashMap<>();
 	
