@@ -16,7 +16,7 @@
 
 package io.core9.dragster.data;
 
-import io.core9.dragster.model.HostName;
+import io.core9.dragster.model.Host;
 import io.core9.dragster.model.Page;
 import io.core9.dragster.model.Version;
 
@@ -30,9 +30,17 @@ public class PageData {
 	static Map<String, Object> repository = new HashMap<>();
 	static {/*
 		categories.add(createCategory(1, "Dogs"));
-		pages.add(createPage(1, categories.get(1), "Cat 1", new String[] {
-				"url1", "url2" }, new String[] { "version1", "version2" }, "available"));
 */
+
+
+		long id = 0;
+		String name = null;
+		Version currentVersion = new Version();
+		Host host = new Host();
+		String currentHtml = "";
+		String status = "active";
+		pages.add(createPage(id, name, currentVersion, host, currentHtml, status));
+		
 	}
 
 	public Page getPagebyId(long pageId) {
@@ -84,33 +92,16 @@ public class PageData {
 		pages.add(page);
 	}
 
-	static Page createPage(long id, HostName cat, String name, String[] urls,
-			String[] versions, String status) {
+
+
+	static Page createPage(long id, String name, Version currentVersion, Host host, String currentHtml, String status) {
 		Page page = new Page();
 		page.setId(id);
-		page.setHostname(cat);
 		page.setName(name);
-
-		List<Version> versionObjs = new java.util.ArrayList<Version>();
-		int i = 0;
-		if (null != versions) {
-			for (String versionString : versions) {
-				i = i + 1;
-				Version version = new Version();
-				version.setId(i);
-				version.setName(versionString);
-				versionObjs.add(version);
-			}
-		}
-		page.setVersions(versionObjs);
+		page.setCurrentVersion(currentVersion);
+		page.setHost(host);
+		page.setHtml(currentHtml);
 		page.setStatus(status);
-		return page;
-	}
-
-	static Page createPage(long id, String name) {
-		Page page = new Page();
-		page.setId(id);
-		page.setName(name);
 		return page;
 	}
 }

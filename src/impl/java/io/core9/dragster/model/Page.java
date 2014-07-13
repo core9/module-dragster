@@ -15,7 +15,7 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 @XmlRootElement(name = "Page")
 public class Page {
 	private long id;
-	private HostName hostname;
+	private Host host;
 	private String name;
 	private List<Version> versions = new ArrayList<Version>();
 	@SuppressWarnings("unused")
@@ -35,12 +35,12 @@ public class Page {
 	}
 
 	@XmlElement(name = "hostname")
-	public HostName getHostname() {
-		return hostname;
+	public Host getHost() {
+		return host;
 	}
 
-	public void setHostname(HostName hostname) {
-		this.hostname = hostname;
+	public void setHost(Host host) {
+		this.host = host;
 	}
 
 	@XmlElement(name = "name")

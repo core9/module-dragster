@@ -3,8 +3,8 @@ package io.core9.dragster.model;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "HostName")
-public class HostName {
+@XmlRootElement(name = "Host")
+public class Host {
 	private long id;
 	private String name;
 

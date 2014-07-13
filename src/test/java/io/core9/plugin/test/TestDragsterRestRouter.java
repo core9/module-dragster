@@ -113,7 +113,7 @@ public class TestDragsterRestRouter {
 		System.out.println(response);
 	}
 	
-	public void restRouterPostPet() {
+	public void restRouterPostPage() {
 
 		RestRequest request = new RestRequestImpl();
 
@@ -138,10 +138,11 @@ public class TestDragsterRestRouter {
 		routerTest.setUp();
 		long start = System.currentTimeMillis();
 		routerTest.restRouterGetApiForDragster();
+		routerTest.restRouterPostPage();
 /*		routerTest.restRouterGetPetById();
 		routerTest.restRouterGetfindByTags();
 		routerTest.restRouterGetOwnerOfPet();
-		routerTest.restRouterPostPet();
+		
 		routerTest.restRouterPutPet();*/
 
 		long elapsed = System.currentTimeMillis() - start;
