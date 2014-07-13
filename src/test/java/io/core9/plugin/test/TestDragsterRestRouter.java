@@ -119,9 +119,9 @@ public class TestDragsterRestRouter {
 
 		request.setBasePath("/api");
 		request.setMethod(Method.POST);
-		request.setPath("/api/pet");
+		request.setPath("/api/dragster");
 
-		JSONObject body = (JSONObject) JSONValue.parse(readFile("TestRestRouter.restRouterPostPet.json"));
+		JSONObject body = (JSONObject) JSONValue.parse(readFile("TestDragster.PostPage.json"));
 
 		request.setBody(body.toString());
 
