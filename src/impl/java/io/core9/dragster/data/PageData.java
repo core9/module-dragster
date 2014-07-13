@@ -1,19 +1,3 @@
-/**
- *  Copyright 2012 Wordnik, Inc.
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
 package io.core9.dragster.data;
 
 import io.core9.dragster.model.Host;
@@ -28,9 +12,11 @@ import java.util.Map;
 public class PageData {
 	static List<Page> pages = new ArrayList<Page>();
 	static Map<String, Object> repository = new HashMap<>();
-	static {/*
+	static {
+		
+		/*
 		categories.add(createCategory(1, "Dogs"));
-*/
+		 */
 
 
 		long id = 0;
@@ -39,7 +25,8 @@ public class PageData {
 		Host host = new Host();
 		String currentHtml = "";
 		String status = "active";
-		pages.add(createPage(id, name, currentVersion, host, currentHtml, status));
+		List<Version> versions = new ArrayList<>();
+		pages.add(createPage(id, name, currentVersion, host, currentHtml, status, versions));
 		
 	}
 
@@ -94,7 +81,7 @@ public class PageData {
 
 
 
-	static Page createPage(long id, String name, Version currentVersion, Host host, String currentHtml, String status) {
+	static Page createPage(long id, String name, Version currentVersion, Host host, String currentHtml, String status, List<Version> versions) {
 		Page page = new Page();
 		page.setId(id);
 		page.setName(name);
@@ -102,6 +89,7 @@ public class PageData {
 		page.setHost(host);
 		page.setHtml(currentHtml);
 		page.setStatus(status);
+		page.setVersions(versions);
 		return page;
 	}
 }
