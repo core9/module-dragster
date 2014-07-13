@@ -23,6 +23,7 @@ dependencies {
 
 	compile 'io.core9:module-rest-api:+'
 	
+	testCompile 'io.core9:module-rest-api:+'
 	testCompile 'io.core9:core-api:+'
 	testCompile 'io.core9:core:+'
 	testCompile 'io.core9:module-hostmanager:+'
