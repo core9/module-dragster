@@ -37,17 +37,17 @@ public class TestDragsterRestRouter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void restRouterGetApiForPet() {
+	public void restRouterGetApiForDragster() {
 
 		RestRequest request = new RestRequestImpl();
 
 		request.setBasePath("/api");
 		request.setMethod(Method.GET);
-		request.setPath("/api/pet-docs");
+		request.setPath("/api/dragster-docs");
 
 		Object response = restRouter.getResponse(request);
 
-		assertTrue(((HashMap<String, Object>) response).get("resourcePath").equals("/pet"));
+		assertTrue(((HashMap<String, Object>) response).get("resourcePath").equals("/dragster"));
 	}
 
 	public void restRouterGetPetById() {
@@ -137,12 +137,12 @@ public class TestDragsterRestRouter {
 		TestDragsterRestRouter routerTest = new TestDragsterRestRouter();
 		routerTest.setUp();
 		long start = System.currentTimeMillis();
-		routerTest.restRouterGetApiForPet();
-		routerTest.restRouterGetPetById();
+		routerTest.restRouterGetApiForDragster();
+/*		routerTest.restRouterGetPetById();
 		routerTest.restRouterGetfindByTags();
 		routerTest.restRouterGetOwnerOfPet();
 		routerTest.restRouterPostPet();
-		routerTest.restRouterPutPet();
+		routerTest.restRouterPutPet();*/
 
 		long elapsed = System.currentTimeMillis() - start;
 		System.out.println("elapsed time = " + elapsed + "ms");
