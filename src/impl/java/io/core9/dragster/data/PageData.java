@@ -13,18 +13,13 @@ public class PageData {
 	static List<Page> pages = new ArrayList<Page>();
 	static Map<String, Object> repository = new HashMap<>();
 	static {
-		
-		/*
-		categories.add(createCategory(1, "Dogs"));
-		 */
-
 
 		long id = 0;
 		String name = null;
 		Version currentVersion = new Version();
 		Host host = new Host();
 		String currentHtml = "";
-		String status = "active";
+		String status = "available";
 		List<Version> versions = new ArrayList<>();
 		pages.add(createPage(id, name, currentVersion, host, currentHtml, status, versions));
 		

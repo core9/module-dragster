@@ -1,17 +1,15 @@
-Page {
-hostname (HostName, optional),
-currentHtml (string, optional),
-versions (array[Version], optional),
-name (string, optional),
-id (integer): id of page,
-currentVersion (Version, optional),
-status (string, optional) = ['available' or 'pending' or 'sold']: page status in the store
-}
-HostName {
-name (string, optional),
-id (integer, optional)
-}
-Version {
-name (string, optional),
-id (integer, optional)
+{
+  "id" : 0,
+  "host" : {
+    "id" : 0,
+    "name" : null
+  },
+  "name" : null,
+  "versions" : [ ],
+  "currentVersion" : {
+    "id" : 0,
+    "name" : null
+  },
+  "status" : "active",
+  "html" : null
 }
