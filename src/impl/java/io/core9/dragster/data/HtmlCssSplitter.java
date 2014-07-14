@@ -1,6 +1,7 @@
 package io.core9.dragster.data;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
@@ -51,8 +52,12 @@ public class HtmlCssSplitter {
 		  public void tail(Node node, int depth) {
 		    if (node instanceof Element) {
 		        Element e = (Element) node;
+		        
+		        Attributes attr = e.attributes();
+		        
 		        e.removeAttr("class");
 		        e.removeAttr("style");
+		        e.removeAttr("draggable");
 		    }
 		  }
 
