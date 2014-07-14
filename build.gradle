@@ -22,6 +22,7 @@ task publishBintray (type: org._10ne.gradle.rest.RestTask, dependsOn: bintrayUpl
 dependencies {
 
 	compile 'io.core9:module-rest-api:+'
+	compile 'org.jsoup:jsoup:1.7.3'
 	
 	testCompile 'io.core9:module-rest-api:+'
 	testCompile 'io.core9:core-api:+'
