@@ -1,5 +1,8 @@
 package io.core9.dragster.data;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Document;
@@ -13,6 +16,7 @@ public class HtmlCssSplitter {
 	private String htmlWithInlineCss;
 	private String css;
 	private String cleanHtml;
+	private Map<String, String> cssIdRegister = new HashMap<>();
 	
 	
 	public String getHtmlWithInlineCss() {
@@ -25,7 +29,7 @@ public class HtmlCssSplitter {
 	
 	public String getCss() {
 		splitCssFromHtml(htmlWithInlineCss);
-		return css;
+		return cssIdRegister.toString();
 	}
 
 	public void setCss(String css) {
@@ -53,7 +57,14 @@ public class HtmlCssSplitter {
 		    if (node instanceof Element) {
 		        Element e = (Element) node;
 		        
-		        Attributes attr = e.attributes();
+		        if(e.className().equals("column")){
+		        	String id = e.attr("id");
+		        	String style = e.attr("style");
+		        	cssIdRegister.put(id, style);
+		        	// remove content
+		        	e.children().remove();
+		        	// add closure shortcode
+		        }
 		        
 		        e.removeAttr("class");
 		        e.removeAttr("style");
