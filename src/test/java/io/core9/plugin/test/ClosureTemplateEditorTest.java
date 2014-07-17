@@ -1,5 +1,7 @@
 package io.core9.plugin.test;
 
+import io.core9.dragster.data.HtmlCssSplitter;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -33,10 +35,19 @@ public class ClosureTemplateEditorTest {
 			if(line.startsWith("<!DOCTYPE")) inHtml = true;
 			addToHtmlString(line);
 			if(line.startsWith("</html>")) inHtml = false;
-			System.out.println(line);
+			//System.out.println(line);
 		}
 		
 		System.out.println(htmlStr);
+		HtmlCssSplitter htmlSplitter = new HtmlCssSplitter();
+		htmlSplitter.setHtmlWithInlineCss(htmlStr);
+		
+		String cleanHtml = htmlSplitter.getCleanHtml();
+		System.out.println(cleanHtml);
+		String cleanCss = htmlSplitter.getCss();
+		System.out.println(cleanCss);
+		
+		System.out.println("pause");
 	}
 
 	private void addToHtmlString(String line) {
