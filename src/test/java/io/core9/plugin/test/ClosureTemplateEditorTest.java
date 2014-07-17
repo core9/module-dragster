@@ -22,13 +22,11 @@ public class ClosureTemplateEditorTest {
 	public void test() throws IOException {
 
 		JSONObject rawWidget = (JSONObject) JSONValue.parse(FileUtils.readFile("TestClosureTemplateEditor.widgetExctract.json"));
-		
 		String template = (String) rawWidget.get("template");
 		
 		
 		
 		BufferedReader bufReader = new BufferedReader(new StringReader(template));
-
 		String line=null;
 		while( (line=bufReader.readLine()) != null )
 		{
