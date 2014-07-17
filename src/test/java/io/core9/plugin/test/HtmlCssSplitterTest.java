@@ -26,7 +26,9 @@ public class HtmlCssSplitterTest {
 		String cleanCss = htmlSplitter.getCss();
 		System.out.println(cleanCss);
 		
-		System.out.println("pause");
+		String fullHtml = htmlSplitter.getFullHtml();
+		
+		System.out.println(fullHtml);
 	}
 	
 	

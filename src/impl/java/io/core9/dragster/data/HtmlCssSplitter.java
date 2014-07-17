@@ -17,18 +17,18 @@ public class HtmlCssSplitter {
 	private String css = "";
 	private String cleanHtml;
 	private Map<String, String> cssIdRegister = new HashMap<>();
-	
-	
+	private String headStyle;
+
 	public String getHtmlWithInlineCss() {
 		return htmlWithInlineCss;
 	}
-	
+
 	public void setHtmlWithInlineCss(String htmlWithInlineCss) {
 		splitCssFromHtml(htmlWithInlineCss);
 		formatCssToFile(cssIdRegister);
 		this.htmlWithInlineCss = htmlWithInlineCss;
 	}
-	
+
 	public String getCss() {
 		return css;
 	}
@@ -36,9 +36,9 @@ public class HtmlCssSplitter {
 	public void setCss(String css) {
 		this.css = css;
 	}
-	
+
 	private void formatCssToFile(Map<String, String> cssIdRegister2) {
-		for(Entry<String, String> cssItem : cssIdRegister2.entrySet()){
+		for (Entry<String, String> cssItem : cssIdRegister2.entrySet()) {
 			css += "#" + cssItem.getKey() + "{ " + cssItem.getValue() + " }" + "\r\n";
 		}
 	}
@@ -47,52 +47,61 @@ public class HtmlCssSplitter {
 		splitCssFromHtml(htmlWithInlineCss);
 		return cleanHtml;
 	}
-	
+
 	public void setCleanHtml(String cleanHtml) {
 		this.cleanHtml = cleanHtml;
 	}
 
-	
 	private void splitCssFromHtml(String htmlWithInlineCssArg) {
 		Document doc = Jsoup.parse(htmlWithInlineCssArg);
 
+		setHeadStyle(doc.getElementsByTag("style").get(0).childNode(0).toString().trim().replace("{literal}", "").replace("{/literal}", ""));
 
-		NodeTraversor traversor  = new NodeTraversor(new NodeVisitor() {
+		NodeTraversor traversor = new NodeTraversor(new NodeVisitor() {
 
-		  @Override
-		  public void tail(Node node, int depth) {
-		    if (node instanceof Element) {
-		        Element e = (Element) node;
-		        
-		        if(e.className().equals("columns-wrapper")){
-		        	editCss(e);
-		        }
-		        
-		        if(e.className().equals("column")){
-		        	editCss(e);
-		        	e.children().remove();
-		        }
-		        
-		        
-		        e.removeAttr("class");
-		        e.removeAttr("style");
-		        e.removeAttr("draggable");
-		    }
-		  }
+			@Override
+			public void tail(Node node, int depth) {
+				if (node instanceof Element) {
+					Element e = (Element) node;
 
-		  private void editCss(Element e) {
-	        	String id = e.attr("id");
-	        	String style = e.attr("style");
-	        	cssIdRegister.put(id, style);
-		}
+					if (e.className().equals("columns-wrapper")) {
+						editCss(e);
+					}
 
-		@Override
-		  public void head(Node node, int depth) {        
-		  }
+					if (e.className().equals("column")) {
+						editCss(e);
+						e.children().remove();
+					}
+
+					e.removeAttr("style");
+					e.removeAttr("draggable");
+					e.removeAttr("contenteditable");
+				}
+			}
+
+			private void editCss(Element e) {
+				cssIdRegister.put(e.attr("id"), e.attr("style"));
+			}
+
+			@Override
+			public void head(Node node, int depth) {
+			}
 		});
 
 		traversor.traverse(doc.body());
 		cleanHtml = doc.toString();
 	}
-	
+
+	public String getFullHtml() {
+		return "";
+	}
+
+	public String getHeadStyle() {
+		return headStyle;
+	}
+
+	public void setHeadStyle(String headStyle) {
+		this.headStyle = headStyle;
+	}
+
 }

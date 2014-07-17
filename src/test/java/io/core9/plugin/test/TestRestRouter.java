@@ -11,12 +11,6 @@ import io.core9.plugin.rest.RestRouter;
 import io.core9.plugin.rest.RestRouterImpl;
 import io.core9.plugin.server.request.Method;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 
 import net.minidev.json.JSONArray;
