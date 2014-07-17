@@ -1,49 +1,48 @@
 package io.core9.plugin.test;
 
-import static org.junit.Assert.*;
-import io.core9.core.PluginRegistry;
-import io.core9.core.PluginRegistryImpl;
-import io.core9.core.boot.BootstrapFramework;
-import io.core9.plugin.rest.RestRequest;
-import io.core9.plugin.rest.RestRequestImpl;
-import io.core9.plugin.rest.RestRouter;
-import io.core9.plugin.rest.RestRouterImpl;
-import io.core9.plugin.server.request.Method;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 
-import java.util.HashMap;
+import net.minidev.json.JSONObject;
+import net.minidev.json.JSONValue;
 
 import org.junit.Test;
 
 public class ClosureTemplateEditorTest {
 	
-	private static PluginRegistry registry;
-	private static RestRouter restRouter;
 
-	public void setUp() {
-		BootstrapFramework.run();
-		registry = PluginRegistryImpl.getInstance();
-		restRouter = (RestRouter) registry.getPlugin(RestRouterImpl.class);
 
-		assertNotNull(restRouter);
-	}
-
-	@SuppressWarnings("unchecked")
-	public void restRouterGetApiForDragster() {
-
-		RestRequest request = new RestRequestImpl();
-
-		request.setBasePath("/api");
-		request.setMethod(Method.GET);
-		request.setPath("/api/dragster-docs");
-
-		Object response = restRouter.getResponse(request);
-
-		assertTrue(((HashMap<String, Object>) response).get("resourcePath").equals("/dragster"));
-	}
+	private boolean inHtml = false;
+	private String htmlStr = "";
 
 	@Test
-	public void test() {
+	public void test() throws IOException {
+
+		JSONObject rawWidget = (JSONObject) JSONValue.parse(FileUtils.readFile("TestClosureTemplateEditor.widgetExctract.json"));
 		
+		String template = (String) rawWidget.get("template");
+		
+		
+		
+		BufferedReader bufReader = new BufferedReader(new StringReader(template));
+
+		String line=null;
+		while( (line=bufReader.readLine()) != null )
+		{
+			if(line.startsWith("<!DOCTYPE")) inHtml = true;
+			addToHtmlString(line);
+			if(line.startsWith("</html>")) inHtml = false;
+			System.out.println(line);
+		}
+		
+		System.out.println(htmlStr);
+	}
+
+	private void addToHtmlString(String line) {
+		if(inHtml){
+			htmlStr += line;
+		}
 	}
 
 }

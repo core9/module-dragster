@@ -102,7 +102,7 @@ public class TestRestRouter {
 		request.setMethod(Method.PUT);
 		request.setPath("/api/pet");
 
-		JSONObject body = (JSONObject) JSONValue.parse(readFile("TestRestRouter.restRouterPostPet.json"));
+		JSONObject body = (JSONObject) JSONValue.parse(FileUtils.readFile("TestRestRouter.restRouterPostPet.json"));
 
 		request.setBody(body.toString());
 
@@ -121,7 +121,7 @@ public class TestRestRouter {
 		request.setMethod(Method.POST);
 		request.setPath("/api/pet");
 
-		JSONObject body = (JSONObject) JSONValue.parse(readFile("TestRestRouter.restRouterPostPet.json"));
+		JSONObject body = (JSONObject) JSONValue.parse(FileUtils.readFile("TestRestRouter.restRouterPostPet.json"));
 
 		request.setBody(body.toString());
 
@@ -151,16 +151,6 @@ public class TestRestRouter {
 		System.exit(0);
 	}
 
-	static String readFile(String file) {
-		URL main = TestRestRouter.class.getResource(file);
-		File path = new File(main.getPath());
-		byte[] encoded = null;
-		try {
-			encoded = Files.readAllBytes(Paths.get(path.getAbsolutePath()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return new String(encoded, StandardCharsets.UTF_8);
-	}
+
 
 }
