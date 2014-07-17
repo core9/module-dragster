@@ -64,14 +64,15 @@ public class HtmlCssSplitter {
 		    if (node instanceof Element) {
 		        Element e = (Element) node;
 		        
-		        if(e.className().equals("column")){
-		        	String id = e.attr("id");
-		        	String style = e.attr("style");
-		        	cssIdRegister.put(id, style);
-		        	// remove content
-		        	e.children().remove();
-		        	// add closure shortcode
+		        if(e.className().equals("columns-wrapper")){
+		        	editCss(e);
 		        }
+		        
+		        if(e.className().equals("column")){
+		        	editCss(e);
+		        	e.children().remove();
+		        }
+		        
 		        
 		        e.removeAttr("class");
 		        e.removeAttr("style");
@@ -79,7 +80,13 @@ public class HtmlCssSplitter {
 		    }
 		  }
 
-		  @Override
+		  private void editCss(Element e) {
+	        	String id = e.attr("id");
+	        	String style = e.attr("style");
+	        	cssIdRegister.put(id, style);
+		}
+
+		@Override
 		  public void head(Node node, int depth) {        
 		  }
 		});
