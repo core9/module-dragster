@@ -113,7 +113,7 @@ public class TestDragsterRestRouter {
 
 		request.setBasePath("/api");
 		request.setMethod(Method.POST);
-		request.setPath("/api/dragster");
+		request.setPath("/api/dragster/page");
 
 		JSONObject body = (JSONObject) JSONValue.parse(FileUtils.readFile("TestDragster.PostPage.json"));
 

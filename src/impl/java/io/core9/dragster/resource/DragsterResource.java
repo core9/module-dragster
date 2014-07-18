@@ -64,6 +64,7 @@ public class DragsterResource {
 	}
 
 	@POST
+	@Path("/page")
 	@ApiOperation(value = "Add a new page to the store")
 	@ApiResponses(value = { @ApiResponse(code = 405, message = "Invalid input") })
 	public Response addPage(
