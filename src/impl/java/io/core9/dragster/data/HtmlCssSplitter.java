@@ -30,7 +30,8 @@ public class HtmlCssSplitter {
 	}
 
 	public String getCss() {
-		return css;
+		headStyle += css;
+		return headStyle;
 	}
 
 	public void setCss(String css) {
@@ -55,8 +56,10 @@ public class HtmlCssSplitter {
 	private void splitCssFromHtml(String htmlWithInlineCssArg) {
 		Document doc = Jsoup.parse(htmlWithInlineCssArg);
 
-		setHeadStyle(doc.getElementsByTag("style").get(0).childNode(0).toString().trim().replace("{literal}", "").replace("{/literal}", ""));
-
+		setHeadStyle(doc.getElementsByTag("style").get(0).childNode(0).toString().trim().replace("{literal}", "").replace("{/literal}", "") + "\n");
+		
+		doc.getElementsByTag("style").empty();
+		
 		NodeTraversor traversor = new NodeTraversor(new NodeVisitor() {
 
 			@Override
@@ -93,7 +96,10 @@ public class HtmlCssSplitter {
 	}
 
 	public String getFullHtml() {
-		return "";
+		String fullHtml = getCleanHtml();
+		Document doc = Jsoup.parse(fullHtml);
+		doc.getElementsByTag("style").html(getCss());
+		return doc.toString();
 	}
 
 	public String getHeadStyle() {

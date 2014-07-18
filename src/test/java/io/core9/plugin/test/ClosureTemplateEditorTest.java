@@ -44,7 +44,7 @@ public class ClosureTemplateEditorTest {
 		System.out.println(cleanHtml);
 		String cleanCss = htmlSplitter.getCss();
 		System.out.println(cleanCss);
-		
+		System.out.println(htmlSplitter.getFullHtml());
 		System.out.println("pause");
 	}
 
